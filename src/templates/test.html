@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= title %> Plugin Test Suite</title>
+
+    <!-- Dev Dependencies -->
+    <script src="require/dev/knockout-<%= knockout.version %>.js"></script>
+
+    <!-- Test Dependencies -->
+    <script src="require/test/jquery.min.js"></script>
+    <link rel="stylesheet" href="require/test/qunit.css" media="screen">
+    <script src="require/test/qunit.js"></script>
+    <script>
+        // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+        var log = []
+        QUnit.done(function (testResults) {
+            var tests = []
+            for (var i = 0, len = log.length; i < len; i++) {
+                var details = log[i]
+                tests.push({
+                    name: details.name,
+                    result: details.result,
+                    expected: details.expected,
+                    actual: details.actual,
+                    source: details.source
+                })
+            }
+            testResults.tests = tests
+
+            window.global_test_results = testResults
+        })
+
+        QUnit.testStart(function (testDetails) {
+            QUnit.log = function (details) {
+                if (!details.result) {
+                    details.name = testDetails.name
+                    log.push(details)
+                }
+            }
+        })
+
+        // Cleanup
+        QUnit.testDone(function () {
+            $('#qunit-fixture').empty()
+            $('#modal-test, .modal-backdrop').remove()
+        })
+    </script>
+
+    <!-- Subject -->
+    <script src="<%= title %>.js"></script>
+
+    <!-- Tests -->
+    <script src="unit/tests.js"></script>
+
+</head>
+<body>
+    <div id="qunit-container">
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+    </div>
+</body>
+</html>
