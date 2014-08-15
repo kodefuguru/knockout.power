@@ -16,7 +16,7 @@
         "url":"http://github.com/kodefuguru/knockout.power/issues",
         "email":"kodefuguru@live.com"
     },
-    "homepage": "http://kodefuguru.com/knockout.power",
+    "homepage": "http://kodefuguru.com/knockoutpower",
     "contributors": [
         {
             "name":"Chris Eargle",
@@ -37,7 +37,7 @@
     "licenses": [
       {
           "type": "MIT",
-          "url": "http://kodefuguru.com/knockout.power/license"
+          "url": "http://kodefuguru.com/knockoutpower/license"
       }
     ],    
     "dependencies": {},

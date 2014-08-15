@@ -1,7 +1,7 @@
 /**********************************************************************************
-* knockout.power v0.1.0 (http://kodefuguru.com/knockout.power)
+* knockout.power v0.1.0 (http://kodefuguru.com/knockoutpower)
 * Copyright 2014 Chris Eargle
-* Licensed under http://kodefuguru.com/knockout.power/license
+* Licensed under http://kodefuguru.com/knockoutpower/license
 **********************************************************************************/
 
 (function() {

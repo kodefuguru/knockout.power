@@ -1,3 +1,3 @@
-[<%= title %>](<%= projectUrl %>)
+# [<%= title %>](<%= projectUrl %>)
 
 <%= description %>
