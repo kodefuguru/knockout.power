@@ -31,6 +31,10 @@ module.exports = (grunt) ->
                 files: 
                     'test/<%= pkg.name %>.js' : '<%= source %>'
                     'test/unit/tests.js' : ['src/test/unit/*.coffee']
+        concat:
+            readme:
+                src: ['readme.md', 'doc/usage.md']
+                dest: 'readme.md'
         copy: 
             dist:
                 src: '<%= coffee.build.dest %>'
@@ -93,13 +97,14 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-template'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.loadNpmTasks 'grunt-contrib-copy'
+    grunt.loadNpmTasks 'grunt-contrib-concat'
+    grunt.loadNpmTasks 'grunt-contrib-copy'    
     grunt.loadNpmTasks 'grunt-contrib-qunit'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-watch'
 
     grunt.registerTask 'test', ['clean:test', 'coffee:test', 'template:test', 'copy:test', 'qunit']
-    grunt.registerTask 'build', ['clean:build', 'coffee:build', 'usebanner:build', 'template:nuspec', 'template:readme']
+    grunt.registerTask 'build', ['clean:build', 'coffee:build', 'usebanner:build', 'template:nuspec', 'template:readme', 'concat:readme']
     grunt.registerTask 'dist', ['clean:dist', 'nugetpack', 'copy:dist']
     grunt.registerTask 'default', ['build', 'test', 'dist']
  
